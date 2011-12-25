@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Shift:
+  = @slot.shift
+%p
+  %b Position:
+  = @slot.position
+%p
+  %b Min people:
+  = @slot.min_people
+%p
+  %b Max people:
+  = @slot.max_people
+
+= link_to 'Edit', edit_slot_path(@slot)
+\|
+= link_to 'Back', slots_path

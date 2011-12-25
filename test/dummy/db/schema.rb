@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111225225953) do
+ActiveRecord::Schema.define(:version => 20111225230542) do
 
   create_table "schedule_events", :force => true do |t|
     t.string   "name"
@@ -35,6 +35,14 @@ ActiveRecord::Schema.define(:version => 20111225225953) do
 
   add_index "schedule_people_positions", ["person_id", "position_id"], :name => "index_schedule_people_positions_on_person_id_and_position_id", :unique => true
 
+  create_table "schedule_people_slots", :id => false, :force => true do |t|
+    t.integer "person_id"
+    t.integer "slot_id"
+  end
+
+  add_index "schedule_people_slots", ["person_id", "slot_id"], :name => "index_schedule_people_slots_on_person_id_and_slot_id", :unique => true
+  add_index "schedule_people_slots", ["slot_id"], :name => "index_schedule_people_slots_on_slot_id"
+
   create_table "schedule_positions", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -54,5 +62,17 @@ ActiveRecord::Schema.define(:version => 20111225225953) do
   end
 
   add_index "schedule_shifts", ["event_id"], :name => "index_schedule_shifts_on_event_id"
+
+  create_table "schedule_slots", :force => true do |t|
+    t.integer  "shift_id"
+    t.integer  "position_id"
+    t.integer  "min_people",  :default => 0
+    t.integer  "max_people",  :default => 0
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  add_index "schedule_slots", ["position_id"], :name => "index_schedule_slots_on_position_id"
+  add_index "schedule_slots", ["shift_id"], :name => "index_schedule_slots_on_shift_id"
 
 end

@@ -1,0 +1,25 @@
+%h1 Listing slots
+
+%table
+  %tr
+    %th Shift
+    %th Position
+    %th Min people
+    %th Max people
+    %th
+    %th
+    %th
+
+  - @slots.each do |slot|
+    %tr
+      %td= slot.shift
+      %td= slot.position
+      %td= slot.min_people
+      %td= slot.max_people
+      %td= link_to 'Show', slot
+      %td= link_to 'Edit', edit_slot_path(slot)
+      %td= link_to 'Destroy', slot, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Slot', new_slot_path
