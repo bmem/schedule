@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111225225043) do
+ActiveRecord::Schema.define(:version => 20111225225953) do
 
   create_table "schedule_events", :force => true do |t|
     t.string   "name"
@@ -42,5 +42,17 @@ ActiveRecord::Schema.define(:version => 20111225225043) do
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
   end
+
+  create_table "schedule_shifts", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "event_id"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "schedule_shifts", ["event_id"], :name => "index_schedule_shifts_on_event_id"
 
 end

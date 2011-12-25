@@ -1,0 +1,27 @@
+%h1 Listing shifts
+
+%table
+  %tr
+    %th Name
+    %th Description
+    %th Event
+    %th Start time
+    %th End time
+    %th
+    %th
+    %th
+
+  - @shifts.each do |shift|
+    %tr
+      %td= shift.name
+      %td= shift.description
+      %td= shift.event
+      %td= shift.start_time
+      %td= shift.end_time
+      %td= link_to 'Show', shift
+      %td= link_to 'Edit', edit_shift_path(shift)
+      %td= link_to 'Destroy', shift, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Shift', new_shift_path
