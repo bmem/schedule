@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111225224424) do
+ActiveRecord::Schema.define(:version => 20111225225043) do
 
   create_table "schedule_events", :force => true do |t|
     t.string   "name"
@@ -26,6 +26,21 @@ ActiveRecord::Schema.define(:version => 20111225224424) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "schedule_people_positions", :id => false, :force => true do |t|
+    t.integer "person_id",   :null => false
+    t.integer "position_id", :null => false
+  end
+
+  add_index "schedule_people_positions", ["person_id", "position_id"], :name => "index_schedule_people_positions_on_person_id_and_position_id", :unique => true
+
+  create_table "schedule_positions", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.boolean  "new_user_eligible"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
 end
