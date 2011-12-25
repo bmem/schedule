@@ -105,6 +105,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  formtastic
+  haml-rails
   jquery-rails
   schedule!
   sqlite3

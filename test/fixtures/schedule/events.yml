@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  description: MyText
+  start_date: 2011-12-25
+  end_date: 2011-12-25
+  signup_open: false
+
+two:
+  name: MyString
+  description: MyText
+  start_date: 2011-12-25
+  end_date: 2011-12-25
+  signup_open: false
