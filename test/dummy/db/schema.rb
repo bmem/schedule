@@ -13,17 +13,17 @@
 ActiveRecord::Schema.define(:version => 20111225230542) do
 
   create_table "schedule_events", :force => true do |t|
-    t.string   "name"
+    t.string   "name",                          :null => false
     t.text     "description"
-    t.date     "start_date"
-    t.date     "end_date"
-    t.boolean  "signup_open"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.date     "start_date",                    :null => false
+    t.date     "end_date",                      :null => false
+    t.boolean  "signup_open", :default => true, :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "schedule_people", :force => true do |t|
-    t.string   "name"
+    t.string   "name",       :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -34,29 +34,30 @@ ActiveRecord::Schema.define(:version => 20111225230542) do
   end
 
   add_index "schedule_people_positions", ["person_id", "position_id"], :name => "index_schedule_people_positions_on_person_id_and_position_id", :unique => true
+  add_index "schedule_people_positions", ["position_id"], :name => "index_schedule_people_positions_on_position_id"
 
   create_table "schedule_people_slots", :id => false, :force => true do |t|
-    t.integer "person_id"
-    t.integer "slot_id"
+    t.integer "person_id", :null => false
+    t.integer "slot_id",   :null => false
   end
 
   add_index "schedule_people_slots", ["person_id", "slot_id"], :name => "index_schedule_people_slots_on_person_id_and_slot_id", :unique => true
   add_index "schedule_people_slots", ["slot_id"], :name => "index_schedule_people_slots_on_slot_id"
 
   create_table "schedule_positions", :force => true do |t|
-    t.string   "name"
+    t.string   "name",                                 :null => false
     t.text     "description"
-    t.boolean  "new_user_eligible"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.boolean  "new_user_eligible", :default => false, :null => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
   end
 
   create_table "schedule_shifts", :force => true do |t|
-    t.string   "name"
+    t.string   "name",        :null => false
     t.text     "description"
     t.integer  "event_id"
-    t.datetime "start_time"
-    t.datetime "end_time"
+    t.datetime "start_time",  :null => false
+    t.datetime "end_time",    :null => false
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -64,10 +65,10 @@ ActiveRecord::Schema.define(:version => 20111225230542) do
   add_index "schedule_shifts", ["event_id"], :name => "index_schedule_shifts_on_event_id"
 
   create_table "schedule_slots", :force => true do |t|
-    t.integer  "shift_id"
-    t.integer  "position_id"
-    t.integer  "min_people",  :default => 0
-    t.integer  "max_people",  :default => 0
+    t.integer  "shift_id",                   :null => false
+    t.integer  "position_id",                :null => false
+    t.integer  "min_people",  :default => 0, :null => false
+    t.integer  "max_people",  :default => 0, :null => false
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
   end

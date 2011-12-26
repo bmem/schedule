@@ -1,9 +1,9 @@
 class CreateSchedulePositions < ActiveRecord::Migration
   def change
     create_table :schedule_positions do |t|
-      t.string :name
+      t.string :name, :null => false
       t.text :description
-      t.boolean :new_user_eligible
+      t.boolean :new_user_eligible, :null => false, :default => false
 
       t.timestamps
     end
@@ -12,8 +12,8 @@ class CreateSchedulePositions < ActiveRecord::Migration
       t.references :person, :null => false
       t.references :position, :null => false
     end
-
     add_index :schedule_people_positions,
         [:person_id, :position_id], :unique => true
+    add_index :schedule_people_positions, [:position_id]
   end
 end
