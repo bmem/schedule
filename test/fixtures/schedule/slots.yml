@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  shift: 
-  position: 
-  min_people: 1
-  max_people: 1
+  shift: one
+  position: one
+  min_people: 0
+  max_people: 0
 
 two:
-  shift: 
-  position: 
-  min_people: 1
-  max_people: 1
+  shift: one
+  position: two
+  min_people: 3
+  max_people: 10

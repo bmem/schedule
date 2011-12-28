@@ -3,7 +3,7 @@ require 'test_helper'
 module Schedule
   class PeopleControllerTest < ActionController::TestCase
     setup do
-      @person = people(:one)
+      @person = schedule_people(:one)
     end
   
     test "should get index" do

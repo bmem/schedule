@@ -3,7 +3,7 @@ require 'test_helper'
 module Schedule
   class PositionsControllerTest < ActionController::TestCase
     setup do
-      @position = positions(:one)
+      @position = schedule_positions(:one)
     end
   
     test "should get index" do

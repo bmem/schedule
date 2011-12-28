@@ -3,7 +3,7 @@ require 'test_helper'
 module Schedule
   class ShiftsControllerTest < ActionController::TestCase
     setup do
-      @shift = shifts(:one)
+      @shift = schedule_shifts(:one)
     end
   
     test "should get index" do

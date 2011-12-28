@@ -3,7 +3,7 @@ require 'test_helper'
 module Schedule
   class SlotsControllerTest < ActionController::TestCase
     setup do
-      @slot = slots(:one)
+      @slot = schedule_slots(:one)
     end
   
     test "should get index" do

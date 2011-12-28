@@ -3,7 +3,7 @@ require 'test_helper'
 module Schedule
   class EventsControllerTest < ActionController::TestCase
     setup do
-      @event = events(:one)
+      @event = schedule_events(:one)
     end
   
     test "should get index" do
