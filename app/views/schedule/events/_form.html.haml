@@ -1,25 +1,10 @@
-= form_for @event do |f|
-  -if @event.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@event.errors.count, "error")} prohibited this event from being saved:"
-      %ul
-        - @event.errors.full_messages.each do |msg|
-          %li= msg
+= semantic_form_for @event do |f|
+  = f.inputs do
+    = f.input :name
+    = f.input :description, :rows => 5
+    = f.input :start_date, :include_blank => false, :as => :date_picker
+    = f.input :end_date, :include_blank => false, :as => :date_picker
+    = f.input :signup_open
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :start_date
-    = f.date_select :start_date
-  .field
-    = f.label :end_date
-    = f.date_select :end_date
-  .field
-    = f.label :signup_open
-    = f.check_box :signup_open
-  .actions
-    = f.submit 'Save'
+  = f.buttons do
+    = f.commit_button
