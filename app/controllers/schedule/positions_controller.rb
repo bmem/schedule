@@ -81,5 +81,9 @@ module Schedule
         format.json { head :no_content }
       end
     end
+
+    def subject_record
+      @position
+    end
   end
 end
