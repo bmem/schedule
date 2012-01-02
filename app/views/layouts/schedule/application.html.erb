@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Schedule</title>
+  <title><%= page_title %></title>
   <%= stylesheet_link_tag    "schedule/application", :media => "all" %>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "schedule/application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<% if alert -%>
+  <p id="alert"><%= alert %></p>
+<% end -%>
+<% if notice -%>
+  <p id="notice"><%= notice %></p>
+<% end -%>
 
 <%= yield %>
 
