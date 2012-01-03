@@ -1,19 +1,8 @@
-= form_for @position do |f|
-  -if @position.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@position.errors.count, "error")} prohibited this position from being saved:"
-      %ul
-        - @position.errors.full_messages.each do |msg|
-          %li= msg
+= semantic_form_for @position do |f|
+  = f.inputs do
+    = f.input :name
+    = f.input :description, :input_html => {:rows => 5}
+    = f.input :new_user_eligible
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :new_user_eligible
-    = f.check_box :new_user_eligible
-  .actions
-    = f.submit 'Save'
+  = f.buttons do
+    = f.commit_button

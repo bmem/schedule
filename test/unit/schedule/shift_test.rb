@@ -6,7 +6,8 @@ module Schedule
       assert Shift.new.invalid?, "Empty shift was valid"
       shift = Shift.new :name => 'A shift',
         :start_time => 1.hour.ago.to_datetime,
-        :end_time => 1.hour.from_now.to_datetime
+        :end_time => 1.hour.from_now.to_datetime,
+        :event => schedule_events(:one)
       assert shift.valid?, "Full shift was invalid"
       shift.name = nil
       assert shift.invalid?, "Nil name was valid"
@@ -26,7 +27,8 @@ module Schedule
 
     test "date order" do
       now = DateTime.now
-      shift = Shift.new :name => 'A shift', :start_time => now, :end_time => now
+      shift = Shift.new :name => 'A shift', :event => schedule_events(:one),
+        :start_time => now, :end_time => now
       assert shift.valid?, "Same start and end were invalid"
       shift.end_time = 1.hour.ago.to_datetime
       assert shift.invalid?, "End before start was valid"
