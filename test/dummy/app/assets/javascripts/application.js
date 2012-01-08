@@ -12,5 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require schedule
+//= require bmem/application
 //= require_tree .

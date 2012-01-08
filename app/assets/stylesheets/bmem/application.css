@@ -9,39 +9,5 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require scaffold
- *= require bmem/application
  *= require_tree .
 */
-
-.menu_header {
-  border-bottom: thin solid;
-  margin: 0 0 1em;
-  padding: 0;
-  width: 100%;
-}
-
-.menu_header ul.menu {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.menu_header ul.menu + ul.menu {
-  margin-top: 0.5em;
-}
-
-.menu_header li {
-  display: inline;
-  margin: 0 0.5em;
-  /* margin-right: 1em; */
-}
-
-.menu_header li:first-child {
-  margin-left: 0;
-}
-
-.menu_header a {
-  font-weight: bolder;
-  text-decoration: none;
-}
