@@ -8,7 +8,7 @@ module Schedule
         format.json { render :json => @positions }
       end
     end
-  
+
     # GET /positions/1
     # GET /positions/1.json
     def show
@@ -17,7 +17,7 @@ module Schedule
         format.json { render :json => @position }
       end
     end
-  
+
     # GET /positions/new
     # GET /positions/new.json
     def new
@@ -26,11 +26,11 @@ module Schedule
         format.json { render :json => @position }
       end
     end
-  
+
     # GET /positions/1/edit
     def edit
     end
-  
+
     # POST /positions
     # POST /positions.json
     def create
@@ -44,7 +44,7 @@ module Schedule
         end
       end
     end
-  
+
     # PUT /positions/1
     # PUT /positions/1.json
     def update
@@ -58,12 +58,12 @@ module Schedule
         end
       end
     end
-  
+
     # DELETE /positions/1
     # DELETE /positions/1.json
     def destroy
       @position.destroy
-  
+
       respond_to do |format|
         format.html { redirect_to positions_url }
         format.json { head :no_content }

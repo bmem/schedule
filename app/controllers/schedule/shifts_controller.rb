@@ -8,7 +8,7 @@ module Schedule
         format.json { render :json => @shifts }
       end
     end
-  
+
     # GET /shifts/1
     # GET /shifts/1.json
     def show
@@ -17,7 +17,7 @@ module Schedule
         format.json { render :json => @shift }
       end
     end
-  
+
     # GET /shifts/new
     # GET /shifts/new.json
     def new
@@ -26,11 +26,11 @@ module Schedule
         format.json { render :json => @shift }
       end
     end
-  
+
     # GET /shifts/1/edit
     def edit
     end
-  
+
     # POST /shifts
     # POST /shifts.json
     def create
@@ -44,7 +44,7 @@ module Schedule
         end
       end
     end
-  
+
     # PUT /shifts/1
     # PUT /shifts/1.json
     def update
@@ -58,12 +58,12 @@ module Schedule
         end
       end
     end
-  
+
     # DELETE /shifts/1
     # DELETE /shifts/1.json
     def destroy
       @shift.destroy
-  
+
       respond_to do |format|
         format.html { redirect_to shifts_url }
         format.json { head :no_content }

@@ -8,7 +8,7 @@ module Schedule
         format.json { render :json => @events }
       end
     end
-  
+
     # GET /events/1
     # GET /events/1.json
     def show
@@ -17,7 +17,7 @@ module Schedule
         format.json { render :json => @event }
       end
     end
-  
+
     # GET /events/new
     # GET /events/new.json
     def new
@@ -26,11 +26,11 @@ module Schedule
         format.json { render :json => @event }
       end
     end
-  
+
     # GET /events/1/edit
     def edit
     end
-  
+
     # POST /events
     # POST /events.json
     def create
@@ -44,7 +44,7 @@ module Schedule
         end
       end
     end
-  
+
     # PUT /events/1
     # PUT /events/1.json
     def update
@@ -58,7 +58,7 @@ module Schedule
         end
       end
     end
-  
+
     # DELETE /events/1
     # DELETE /events/1.json
     def destroy

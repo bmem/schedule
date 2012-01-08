@@ -8,7 +8,7 @@ module Schedule
         format.json { render :json => @slots }
       end
     end
-  
+
     # GET /slots/1
     # GET /slots/1.json
     def show
@@ -17,7 +17,7 @@ module Schedule
         format.json { render :json => @slot }
       end
     end
-  
+
     # GET /slots/new
     # GET /slots/new.json
     def new
@@ -26,11 +26,11 @@ module Schedule
         format.json { render :json => @slot }
       end
     end
-  
+
     # GET /slots/1/edit
     def edit
     end
-  
+
     # POST /slots
     # POST /slots.json
     def create
@@ -44,7 +44,7 @@ module Schedule
         end
       end
     end
-  
+
     # PUT /slots/1
     # PUT /slots/1.json
     def update
@@ -58,12 +58,12 @@ module Schedule
         end
       end
     end
-  
+
     # DELETE /slots/1
     # DELETE /slots/1.json
     def destroy
       @slot.destroy
-  
+
       respond_to do |format|
         format.html { redirect_to slots_url }
         format.json { head :no_content }
