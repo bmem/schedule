@@ -34,4 +34,7 @@ Dummy::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # Don't log asset serving
+  config.assets.logger = nil # doesn't work yet
 end
