@@ -12,6 +12,7 @@
 <ul id="main_menu" class="menu">
 <li><%= link_to t('site_name'), main_app_routes.root_path %></li>
 <%= yield(:main_menu) -%>
+<li><%= link_to t('module.schedule'), schedule_routes.root_path %></li>
 <% if user_signed_in? -%>
   <li><%= link_to 'My account', main_app_routes.edit_user_registration_path %></li>
   <li><%= link_to 'Sign out', main_app_routes.destroy_user_session_path, :method => :delete %></li>
