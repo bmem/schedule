@@ -12,3 +12,20 @@
  *= require schedule
  *= require_tree .
 */
+
+ul.mainmenu {
+  border-bottom: thin solid;
+  list-style: none;
+  margin: 0 0 2em;
+  padding: 0;
+}
+
+ul.mainmenu li {
+  display: inline;
+  margin-right: 1em;
+}
+
+ul.mainmenu a {
+  font-weight: bolder;
+  text-decoration: none;
+}

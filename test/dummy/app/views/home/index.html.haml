@@ -1,4 +1,14 @@
 %h1 BMEM dummy application
+%p= "User signed in? #{user_signed_in?}"
+- if user_signed_in?
+  %p
+    Welcome,
+    = current_user.email
+- else
+  %p
+    = link_to 'Sign in', new_user_session_path
+    or
+    = link_to 'Sign up', new_user_registration_path
 %p
   Perhaps you'd like to see
   = link_to 'schedules', schedule_path
