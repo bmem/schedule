@@ -1,5 +1,5 @@
 module Schedule
-  class EventsController < ApplicationController
+  class EventsController < Schedule::ApplicationController
     # GET /events
     # GET /events.json
     def index

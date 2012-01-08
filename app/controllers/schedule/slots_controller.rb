@@ -1,5 +1,5 @@
 module Schedule
-  class SlotsController < ApplicationController
+  class SlotsController < Schedule::ApplicationController
     # GET /slots
     # GET /slots.json
     def index

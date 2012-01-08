@@ -1,5 +1,5 @@
 module Schedule
-  class ShiftsController < ApplicationController
+  class ShiftsController < Schedule::ApplicationController
     # GET /shifts
     # GET /shifts.json
     def index
