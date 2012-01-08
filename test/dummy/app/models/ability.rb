@@ -3,9 +3,7 @@ class Ability
 
   def initialize(user)
     # In the dummy app, give the guest user all permissions
-    if user.nil?
-      can :manage, :all
-    end
+    can :manage, :all
 
     # Define abilities for the passed in user here. For example:
     #
