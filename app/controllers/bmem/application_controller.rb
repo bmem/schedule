@@ -1,5 +1,7 @@
 module Bmem
-  class Controller < ActionController::Base
+  class ApplicationController < ActionController::Base
+    helper Bmem::TitleHelper
+
     def method_missing(sym, *args)
       return super if sym.to_s.start_with? 'default_'
       with_default = "default_#{sym}".to_sym
