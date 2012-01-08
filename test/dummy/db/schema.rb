@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111225230542) do
+ActiveRecord::Schema.define(:version => 20120108063553) do
 
   create_table "schedule_events", :force => true do |t|
     t.string   "name",                          :null => false
@@ -75,5 +75,23 @@ ActiveRecord::Schema.define(:version => 20111225230542) do
 
   add_index "schedule_slots", ["position_id"], :name => "index_schedule_slots_on_position_id"
   add_index "schedule_slots", ["shift_id"], :name => "index_schedule_slots_on_shift_id"
+
+  create_table "users", :force => true do |t|
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+  end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end
