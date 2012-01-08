@@ -1,21 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title><%= page_title %></title>
+<% content_for :assets do %>
   <%= stylesheet_link_tag    "schedule/application", :media => "all" %>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "schedule/application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<% if alert -%>
-  <p id="alert"><%= alert %></p>
-<% end -%>
-<% if notice -%>
-  <p id="notice"><%= notice %></p>
-<% end -%>
+<% end %>
 
-<%= yield %>
+<% content_for :section_menu do %>
+  <li><%= link_to 'Events', events_path %></li>
+  <li><%= link_to 'Shifts', shifts_path %></li>
+  <li><%= link_to 'Slots', slots_path %></li>
+  <li><%= link_to 'People', people_path %></li>
+  <li><%= link_to 'Positions', positions_path %></li>
+<% end %>
 
-</body>
-</html>
+<%= render "layouts/main_app" %>

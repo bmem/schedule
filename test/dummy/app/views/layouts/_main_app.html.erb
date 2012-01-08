@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= page_title %></title>
+  <%= yield :assets %>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="menu_header">
+<ul id="main_menu" class="menu">
+<li><%= link_to t('site_name'), main_app_routes.root_path %></li>
+<%= yield(:main_menu) -%>
+<% if user_signed_in? -%>
+  <li><%= link_to 'My account', main_app_routes.edit_user_registration_path %></li>
+  <li><%= link_to 'Sign out', main_app_routes.destroy_user_session_path, :method => :delete %></li>
+<% else -%>
+  <li><%= link_to 'Create account', main_app_routes.new_user_registration_path %></li>
+  <li><%= link_to 'Sign in', main_app_routes.new_user_session_path %></li>
+<% end -%>
+</ul>
+<% if content_for? :section_menu -%>
+<ul id="section_menu" class="menu">
+<%= yield :section_menu %>
+</ul>
+<% end -%>
+</div>
+<% if alert -%>
+  <div id="alert"><%= alert %></div>
+<% end -%>
+<% if notice -%>
+  <div id="notice"><%= notice %></div>
+<% end -%>
+
+<%= yield %>
+
+<p>This page has been brought to you by the letters
+<%= ('A'..'Z').to_a.sample(2).sort.to_sentence %> and by the number
+<%= (1..12).to_a.sample(1) %>.
+</body>
+</html>
