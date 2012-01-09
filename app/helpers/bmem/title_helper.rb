@@ -9,7 +9,7 @@ module Bmem
       else
         record_title.try {|title| chunks << title}
       end
-      chunks << controller_name.capitalize
+      chunks << controller_name.humanize.capitalize
       section_name = if controller.class.name.include? '::'
         mod_name = controller.class.name.split(/::/)[-2].downcase
         t "module.#{mod_name}", :default => mod_name

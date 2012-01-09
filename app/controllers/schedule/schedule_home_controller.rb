@@ -3,6 +3,7 @@ module Schedule
     skip_load_and_authorize_resource
 
     def index
+      @page_title = "Home"
       events = Event.accessible_by(current_ability)
       upcoming, completed = events.partition {|e| e.upcoming? || e.current?}
       current, upcoming = upcoming.partition {|e| e.current?}
