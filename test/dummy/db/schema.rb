@@ -10,7 +10,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120108063553) do
+ActiveRecord::Schema.define(:version => 20120109045406) do
+
+  create_table "people", :force => true do |t|
+    t.string   "display_name"
+    t.string   "full_name"
+    t.string   "email"
+    t.string   "shirt_size"
+    t.date     "birthday"
+    t.boolean  "likes_bacon"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "schedule_events", :force => true do |t|
     t.string   "name",                          :null => false
@@ -20,12 +31,6 @@ ActiveRecord::Schema.define(:version => 20120108063553) do
     t.boolean  "signup_open", :default => true, :null => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
-  end
-
-  create_table "schedule_people", :force => true do |t|
-    t.string   "name",       :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "schedule_people_positions", :id => false, :force => true do |t|
@@ -93,5 +98,12 @@ ActiveRecord::Schema.define(:version => 20120108063553) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_view "schedule_people", "CREATE VIEW \"schedule_people\" AS SELECT id, display_name AS name, created_at, updated_at FROM people", :force => true do |v|
+    v.column :id
+    v.column :name
+    v.column :created_at
+    v.column :updated_at
+  end
 
 end
