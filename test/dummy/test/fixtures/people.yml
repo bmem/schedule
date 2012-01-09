@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  display_name: MyString
+  full_name: MyString
+  email: MyString
+  shirt_size: MyString
+  birthday: 2012-01-08
+  likes_bacon: false
+
+two:
+  display_name: MyString
+  full_name: MyString
+  email: MyString
+  shirt_size: MyString
+  birthday: 2012-01-08
+  likes_bacon: false

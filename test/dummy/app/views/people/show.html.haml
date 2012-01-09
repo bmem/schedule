@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Display name:
+  = @person.display_name
+%p
+  %b Full name:
+  = @person.full_name
+%p
+  %b Email:
+  = @person.email
+%p
+  %b Shirt size:
+  = @person.shirt_size
+%p
+  %b Birthday:
+  = @person.birthday
+%p
+  %b Likes bacon:
+  = @person.likes_bacon
+
+= link_to 'Edit', edit_person_path(@person)
+\|
+= link_to 'Back', people_path
