@@ -3,6 +3,7 @@ module Schedule
     # GET /shifts
     # GET /shifts.json
     def index
+      @shifts = @shifts.where(:event_id => @event.id) if @event
       respond_to do |format|
         format.html # index.html.erb
         format.json { render :json => @shifts }
