@@ -10,10 +10,10 @@ Gem::Specification.new do |s|
   s.authors     = ['Trevor "Stonebeard" Stone']
   s.email       = ["bmem-list@burningman.com"]
   s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Schedule."
-  s.description = "TODO: Description of Schedule."
+  s.summary     = "BMEM engine for scheduling shifts at an event."
+  s.description = "People sign up for shifts at an event."
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["Rakefile", "README.rdoc"]
+  s.files = Dir["{app,config,db,lib}/**/*"] + ["LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", "~> 3.2.0.rc1"

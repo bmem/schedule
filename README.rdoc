@@ -1,3 +1,53 @@
-= Schedule
+= BMEM Schedule Engine
 
 BMEM mountable engine for scheduling people for shifts.
+
+The high level scheduling data model:
+  * People have a name.  They've probably got a lot more, but that's for some
+    other module to worry about.
+  * People have many positions.
+  * Positions represent a role a person may sign up for.
+  * Some positions are available to everyone, others are granted to a few.
+  * Events have a start and end date.
+  * Events have many shifts.
+  * Shifts have a start and end date/time.
+  * Shifts have many slots.
+  * Slots represent a position in a shift such as "manager" during "afternoon."
+  * Slots have many people signed up for them.  They can have a minimum and/or
+    maximum number of people signed up.
+
+The schedule engine is typically mounted at /schedule with controllers
+  * /schedule/positions
+  * /schedule/people
+  * /schedule/events
+  * /schedule/shifts
+  * /schedule/slots
+Con may be scoped to a specific event: /schedule/events/1/shifts will show just
+the shifts for event #1, /schedule/events/1/people will show just the people
+involved in event #1, etc.
+
+
+= BMEM Core
+
+TODO split this functionality into a bmem-core gem.
+
+BMEM is a modular system for managing scheduling and personnel for events.
+The primary goal is to create a system for volunteer scheduling at Burning Man,
+but it can be just as easily used for other events and organizations.
+BMEM is based on Ruby on Rails.
+
+The bmem-core gem provides helpers, base classes, and other utilities upon which
+engines and applications can be built.  Additional gems provide modular
+functionality such as scheduling and personnel management through Rails engines.
+An organization's BMEM-based Rails application can include whatever BMEM engines
+are useful and leave out or provide custom replacements for the others.
+
+
+= BMEM Code and Development
+
+BMEM code is copyright Black Rock City, LLC and is made available under the
+open source Apache license.  By contributing code to BMEM, you consent for that
+code to be used under the BMEM license.
+
+If you are interested in contributing to BMEM, send a message to
+bmem-list-subscribe at burningman dot com to join the mailing list.
