@@ -36,5 +36,16 @@ Dummy::Application.configure do
   config.assets.debug = true
 
   # Don't log asset serving
-  config.assets.logger = nil # doesn't work yet
+  Rails::Rack::Logger.class_eval do
+    def call_with_quiet_assets(env)
+      previous_level = Rails.logger.level
+      if env['PATH_INFO'].index("/assets/") == 0
+        Rails.logger.level = Logger::WARNING
+      end
+      call_without_quiet_assets(env).tap do
+        Rails.logger.level = previous_level
+      end
+    end
+    alias_method_chain :call, :quiet_assets
+  end
 end
