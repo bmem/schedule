@@ -40,7 +40,7 @@ Dummy::Application.configure do
     def call_with_quiet_assets(env)
       previous_level = Rails.logger.level
       if env['PATH_INFO'].index("/assets/") == 0
-        Rails.logger.level = Logger::WARNING
+        Rails.logger.level = Logger::WARN
       end
       call_without_quiet_assets(env).tap do
         Rails.logger.level = previous_level
