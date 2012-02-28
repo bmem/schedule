@@ -3,25 +3,25 @@
 BMEM mountable engine for scheduling people for shifts.
 
 The high level scheduling data model:
-  * People have a name.  They've probably got a lot more, but that's for some
-    other module to worry about.
-  * People have many positions.
-  * Positions represent a role a person may sign up for.
-  * Some positions are available to everyone, others are granted to a few.
-  * Events have a start and end date.
-  * Events have many shifts.
-  * Shifts have a start and end date/time.
-  * Shifts have many slots.
-  * Slots represent a position in a shift such as "manager" during "afternoon."
-  * Slots have many people signed up for them.  They can have a minimum and/or
-    maximum number of people signed up.
+* People have a name.  They've probably got a lot more, but that's for some
+  other module to worry about.
+* People have many positions.
+* Positions represent a role a person may sign up for.
+* Some positions are available to everyone, others are granted to a few.
+* Events have a start and end date.
+* Events have many shifts.
+* Shifts have a start and end date/time.
+* Shifts have many slots.
+* Slots represent a position in a shift such as "manager" during "afternoon."
+* Slots have many people signed up for them.  They can have a minimum and/or
+  maximum number of people signed up.
 
 The schedule engine is typically mounted at /schedule with controllers
-  * /schedule/positions
-  * /schedule/people
-  * /schedule/events
-  * /schedule/shifts
-  * /schedule/slots
+* /schedule/positions
+* /schedule/people
+* /schedule/events
+* /schedule/shifts
+* /schedule/slots
 Con may be scoped to a specific event: /schedule/events/1/shifts will show just
 the shifts for event #1, /schedule/events/1/people will show just the people
 involved in event #1, etc.
