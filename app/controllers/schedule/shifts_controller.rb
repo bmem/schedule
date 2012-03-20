@@ -22,6 +22,10 @@ module Schedule
     # GET /shifts/new
     # GET /shifts/new.json
     def new
+      if @event
+        @shift.event = @event
+        @shift.end_time = @shift.start_time = @event.start_date.to_datetime
+      end
       respond_to do |format|
         format.html # new.html.erb
         format.json { render :json => @shift }

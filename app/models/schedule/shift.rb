@@ -8,5 +8,11 @@ module Schedule
     validates_with ReasonableDateValidator,
       :attributes => [:start_time, :end_time]
     # TODO validate start/end overlap with event's start/end?
+
+    def to_s_with_date
+      starts = "#{I18n.l start_time, :format => :short}"
+      ends = "#{I18n.l end_time, :format => :short}"
+      "#{name} #{starts} - #{ends}"
+    end
   end
 end

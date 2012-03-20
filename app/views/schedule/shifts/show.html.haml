@@ -6,13 +6,26 @@
   = @shift.description
 %p
   %b Event:
-  = @shift.event
+  = link_to @shift.event.name, event_path(@shift.event) if @shift.event
 %p
   %b Start time:
   = @shift.start_time
 %p
   %b End time:
   = @shift.end_time
+%p
+  %h3= link_to 'Slots', shift_slots_path(@shift)
+  = link_to 'New slot', new_shift_slot_path(@shift)
+  %table
+    %tr
+      %th= Schedule::Slot.human_attribute_name(:position)
+      %th= Schedule::Slot.human_attribute_name(:min_people)
+      %th= Schedule::Slot.human_attribute_name(:max_people)
+    - @shift.slots.each do |slot|
+      %tr
+        %td= link_to slot.position.name, shift_slot_path(@shift, slot)
+        %td= l slot.min_people
+        %td= l slot.max_people
 
 = link_to 'Edit', edit_shift_path(@shift)
 \|

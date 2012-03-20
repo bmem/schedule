@@ -1,6 +1,8 @@
 Schedule::Engine.routes.draw do
   resources :slots
-  resources :shifts
+  resources :shifts do
+    resources :slots
+  end
   resources :positions
   resources :people
   resources :events do

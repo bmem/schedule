@@ -1,5 +1,7 @@
 module Schedule
   class SlotsController < Schedule::ApplicationController
+    load_and_authorize_resource :shift, :class => Schedule::Shift
+
     # GET /slots
     # GET /slots.json
     def index
@@ -23,6 +25,7 @@ module Schedule
     # GET /slots/new
     # GET /slots/new.json
     def new
+      @slot.shift = @shift if @shift
       respond_to do |format|
         format.html # new.html.erb
         format.json { render :json => @slot }
