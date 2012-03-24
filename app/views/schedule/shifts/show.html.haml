@@ -24,8 +24,8 @@
     - @shift.slots.each do |slot|
       %tr
         %td= link_to slot.position.name, shift_slot_path(@shift, slot)
-        %td= l slot.min_people
-        %td= l slot.max_people
+        %td= slot.min_people
+        %td= slot.max_people
 
 = link_to 'Edit', edit_shift_path(@shift)
 \|
