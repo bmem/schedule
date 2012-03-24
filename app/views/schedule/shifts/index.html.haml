@@ -13,11 +13,11 @@
 
   - @shifts.each do |shift|
     %tr
-      %td= shift.name
+      %td= link_to shift.name, shift
       %td= shift.description
-      %td= shift.event
-      %td= shift.start_time
-      %td= shift.end_time
+      %td= shift.event.name
+      %td= l shift.start_time, :format => :short
+      %td= l shift.end_time, :format => :short
       %td= link_to 'Show', shift
       %td= link_to 'Edit', edit_shift_path(shift)
       %td= link_to 'Destroy', shift, :confirm => 'Are you sure?', :method => :delete
