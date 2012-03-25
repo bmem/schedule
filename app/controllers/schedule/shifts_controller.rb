@@ -4,6 +4,7 @@ module Schedule
     # GET /shifts.json
     def index
       @shifts = @shifts.where(:event_id => @event.id) if @event
+      @shifts = @shifts.order :start_time
       respond_to do |format|
         format.html # index.html.erb
         format.json { render :json => @shifts }
@@ -50,6 +51,40 @@ module Schedule
       end
     end
 
+    # POST /shifts/1/copy
+    def copy
+      startday = Date.parse(params['start'])
+      endday = Date.parse(params['end'])
+      delta_t = @shift.end_time - @shift.start_time
+      results = []
+      failed = false
+      respond_to do |format|
+        @shift.transaction do
+          (startday..endday).each do |day|
+            if day != @shift.start_time.to_date
+              c = Shift.new @shift.attributes
+              @shift.slots.each do |slot|
+                c.start_time = date_and_time(day, @shift.start_time)
+                c.end_time = c.start_time + delta_t
+                c.slots.build slot.attributes
+              end # slots.each
+              unless c.save
+                failed = true
+                format.html { redirect_to @shift, :alert => "Copy shift failed: #{c.errors.full_messages.to_sentence}" }
+                format.json { render :json => c.errors, :status => :unprocessable_entity }
+                raise ActiveRecord::Rollback
+              end # unless c.save
+              results << c
+            end # if day
+          end # days.each
+        end # shift.transaction
+        unless failed
+          format.html { redirect_to event_shifts_path(@shift.event), :notice => "Shift was copied #{results.count} times" }
+          format.json { render :json => results, :status => :created }
+        end # unless failed
+      end # respond_to
+    end # copy
+
     # PUT /shifts/1
     # PUT /shifts/1.json
     def update
@@ -77,6 +112,11 @@ module Schedule
 
     def subject_record
       @shift
+    end
+
+    private
+    def date_and_time(date, time)
+      DateTime.new(date.year, date.month, date.day, time.hour, time.min, time.sec, time.zone)
     end
   end
 end
