@@ -1,10 +1,14 @@
-%h1 Listing shifts
+%h1
+  Listing shifts
+  - if @event
+    for
+    = link_to @event.name, @event if @event
 
 %table
   %tr
     %th Name
-    %th Description
-    %th Event
+    - unless @event
+      %th Event
     %th Start time
     %th End time
     %th
@@ -14,8 +18,8 @@
   - @shifts.each do |shift|
     %tr
       %td= link_to shift.name, shift
-      %td= shift.description
-      %td= shift.event.name
+      - unless @event
+        %td= shift.event.name
       %td= l shift.start_time, :format => :short
       %td= l shift.end_time, :format => :short
       %td= link_to 'Show', shift
