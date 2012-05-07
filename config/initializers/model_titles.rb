@@ -8,7 +8,7 @@ class ActiveRecord::Base
       "New #{generic}"
     else
       title_sym = TITLE_ATTRIBUTES.find { |sym| respond_to? sym }
-      title_sym ? send(title_sym) : "#{generic} #{item.id}"
+      title_sym ? send(title_sym) : "#{generic} #{id}"
     end
   end
 
