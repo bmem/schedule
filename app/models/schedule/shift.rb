@@ -1,7 +1,8 @@
 module Schedule
   class Shift < ActiveRecord::Base
     belongs_to :event
-    has_many :slots
+    has_many :slots, :dependent => :destroy
+    has_many :work_logs
 
     validates :name, :start_time, :end_time, :event, :presence => true
     validates_with DateOrderValidator, :start => :start_time, :end => :end_time

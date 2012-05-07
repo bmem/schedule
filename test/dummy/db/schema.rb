@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120109045406) do
+ActiveRecord::Schema.define(:version => 20120407224910) do
 
   create_table "people", :force => true do |t|
     t.string   "display_name"
@@ -81,6 +81,24 @@ ActiveRecord::Schema.define(:version => 20120109045406) do
   add_index "schedule_slots", ["position_id"], :name => "index_schedule_slots_on_position_id"
   add_index "schedule_slots", ["shift_id"], :name => "index_schedule_slots_on_shift_id"
 
+  create_table "schedule_work_logs", :force => true do |t|
+    t.integer  "person_id",                   :null => false
+    t.integer  "position_id",                 :null => false
+    t.integer  "event_id"
+    t.integer  "shift_id"
+    t.datetime "start_time",                  :null => false
+    t.datetime "end_time"
+    t.text     "note",        :default => "", :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
+
+  add_index "schedule_work_logs", ["event_id"], :name => "index_schedule_work_logs_on_event_id"
+  add_index "schedule_work_logs", ["person_id"], :name => "index_schedule_work_logs_on_person_id"
+  add_index "schedule_work_logs", ["position_id"], :name => "index_schedule_work_logs_on_position_id"
+  add_index "schedule_work_logs", ["shift_id"], :name => "index_schedule_work_logs_on_shift_id"
+  add_index "schedule_work_logs", ["start_time"], :name => "index_schedule_work_logs_on_start_time"
+
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
@@ -99,7 +117,7 @@ ActiveRecord::Schema.define(:version => 20120109045406) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
-  create_view "schedule_people", "CREATE VIEW \"schedule_people\" AS SELECT id, display_name AS name, created_at, updated_at FROM people", :force => true do |v|
+  create_view "schedule_people", "SELECT id, display_name AS name, created_at, updated_at FROM people", :force => true do |v|
     v.column :id
     v.column :name
     v.column :created_at
