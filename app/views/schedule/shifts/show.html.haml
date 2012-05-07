@@ -29,7 +29,7 @@
 
 .copy
   %h3 Copy this shift and its slots
-  = form_for @shift, :method => :post, :url => { :action => :copy } do |f|
+  = form_for @shift, :method => :post, :url => copy_shift_path(@shift) do |f|
     Repeat once a day from
     = text_field_tag 'start', @shift.start_time.to_date.tomorrow.to_s, :class => 'datepicker'
     to
