@@ -2,6 +2,10 @@ require 'test_helper'
 
 module Schedule
   class ScheduleHomeControllerTest < ActionController::TestCase
+    setup do
+      @routes = Schedule::Engine.routes
+    end
+
     test "should get index" do
       get :index
       assert_response :success

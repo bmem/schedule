@@ -3,6 +3,7 @@ require 'test_helper'
 module Schedule
   class PositionsControllerTest < ActionController::TestCase
     setup do
+      @routes = Schedule::Engine.routes
       @position = schedule_positions(:one)
     end
 

@@ -3,6 +3,7 @@ require 'test_helper'
 module Schedule
   class EventsControllerTest < ActionController::TestCase
     setup do
+      @routes = Schedule::Engine.routes
       @event = schedule_events(:one)
     end
 

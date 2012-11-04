@@ -11,7 +11,7 @@ gem "jquery-rails"
 gem "haml-rails"
 gem "formtastic"
 gem "sass-rails"
-gem "cancan"
+gem "cancan", "= 1.6.7" # TODO 1.6.8 broke namespaces; figure out how to fix
 gem "devise", ">= 2.0.0rc" # apps can use any authentication method
 
 # One could also drop schedule_person and change Schedule::Person.table_name

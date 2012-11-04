@@ -3,6 +3,7 @@ require 'test_helper'
 module Schedule
   class SlotsControllerTest < ActionController::TestCase
     setup do
+      @routes = Schedule::Engine.routes
       @slot = schedule_slots(:one)
     end
 

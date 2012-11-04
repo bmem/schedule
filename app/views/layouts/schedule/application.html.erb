@@ -5,11 +5,11 @@
 
 <% content_for :section_menu do %>
   <li><%= link_to 'Events', events_path %></li>
-  <li><%= link_to 'Shifts', @event ? event_shifts_path(@event) : shifts_path %></li>
-  <li><%= link_to 'Slots', @event ? event_slots_path(@event) : slots_path %></li>
-  <li><%= link_to 'Work Logs', @event ? event_work_logs_path(@event) : work_logs_path %></li>
-  <li><%= link_to 'People', @event ? event_people_path(@event) : people_path %></li>
-  <li><%= link_to 'Positions', @event ? event_positions_path(@event) : positions_path %></li>
+  <li><%= link_to 'Shifts', @event && @event.id ? event_shifts_path(@event) : shifts_path %></li>
+  <li><%= link_to 'Slots', @event && @event.id ? event_slots_path(@event) : slots_path %></li>
+  <li><%= link_to 'Work Logs', @event && @event.id ? event_work_logs_path(@event) : work_logs_path %></li>
+  <li><%= link_to 'People', @event && @event.id ? event_people_path(@event) : people_path %></li>
+  <li><%= link_to 'Positions', @event && @event.id ? event_positions_path(@event) : positions_path %></li>
 <% end %>
 
 <%= render "layouts/main_app" %>

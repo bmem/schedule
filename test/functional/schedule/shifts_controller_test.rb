@@ -3,6 +3,7 @@ require 'test_helper'
 module Schedule
   class ShiftsControllerTest < ActionController::TestCase
     setup do
+      @routes = Schedule::Engine.routes
       @shift = schedule_shifts(:one)
     end
 

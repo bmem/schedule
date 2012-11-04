@@ -1,9 +1,12 @@
 require 'test_helper'
 
+# NOTE: This test doesn't exercise create/update/delete since schedule_people
+# is a view on dummy app's people table.
 module Schedule
   class PeopleControllerTest < ActionController::TestCase
     setup do
-      @person = schedule_people(:one)
+      @routes = Schedule::Engine.routes
+      @person = people(:one)
     end
 
     test "should get index" do
@@ -17,14 +20,6 @@ module Schedule
       assert_response :success
     end
 
-    test "should create person" do
-      assert_difference('Person.count') do
-        post :create, :person => @person.attributes
-      end
-
-      assert_redirected_to person_path(assigns(:person))
-    end
-
     test "should show person" do
       get :show, :id => @person
       assert_response :success
@@ -33,19 +28,6 @@ module Schedule
     test "should get edit" do
       get :edit, :id => @person
       assert_response :success
-    end
-
-    test "should update person" do
-      put :update, :id => @person, :person => @person.attributes
-      assert_redirected_to person_path(assigns(:person))
-    end
-
-    test "should destroy person" do
-      assert_difference('Person.count', -1) do
-        delete :destroy, :id => @person
-      end
-
-      assert_redirected_to people_path
     end
   end
 end

@@ -3,6 +3,7 @@ require 'test_helper'
 module Schedule
   class WorkLogsControllerTest < ActionController::TestCase
     setup do
+      @routes = Schedule::Engine.routes
       @work_log = schedule_work_logs(:one)
     end
 
